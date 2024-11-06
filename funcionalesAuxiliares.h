@@ -5,7 +5,7 @@
 int cant_decimal = 0;
 int cant_octal = 0;
 int cant_hexa = 0;
-
+/*
 int tablaDeTransicion[CANT_ESTADOS][CANT_CLASES_CARACTERES] = {
 // COL1:'0',COL2: '1-7', COL3: '8-9', COL4: 'a-f/A-F', COL5: 'x/X', COL6: '+/-', COL7: otro
     {Q1, Q2, Q2, Q7, Q7, Q6, Q7},
@@ -15,6 +15,17 @@ int tablaDeTransicion[CANT_ESTADOS][CANT_CLASES_CARACTERES] = {
     {Q4, Q4, Q4, Q4, Q7, Q7, Q7},
     {Q5, Q5, Q7, Q7, Q7, Q7, Q7},
     {Q7, Q7, Q7, Q7, Q7, Q7, Q7}
+};*/
+int tablaDeTransicion[CANT_ESTADOS][CANT_CLASES_CARACTERES] = {
+    // COL1: '0', COL2: '1-7', COL3: '8-9', COL4: 'a-f/A-F', COL5: 'x/X', COL6: '+/-', COL7: otro
+    {Q1, Q2, Q2, Q7, Q7, Q6, Q7}, // Estado inicial
+    {Q5, Q5, Q7, Q7, Q3, Q7, Q7}, // Estado Q1: después de '0'
+    {Q2, Q2, Q2, Q7, Q7, Q7, Q7}, // Estado Q2: decimal (sin signo)
+    {Q4, Q4, Q4, Q4, Q7, Q7, Q7}, // Estado Q3: hex después de '0x'/'0X'
+    {Q4, Q4, Q4, Q4, Q7, Q7, Q7}, // Estado Q4: hex en dígitos
+    {Q5, Q5, Q7, Q7, Q7, Q7, Q7}, // Estado Q5: octal después de '0'
+    {Q2, Q2, Q2, Q7, Q7, Q7, Q7}, // Estado Q6: decimal (con signo)
+    {Q7, Q7, Q7, Q7, Q7, Q7, Q7}  // Estado Q7: estado de error
 };
 
 
